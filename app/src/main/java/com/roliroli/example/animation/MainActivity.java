@@ -2,6 +2,9 @@ package com.roliroli.example.animation;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.animation.Keyframe;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -60,6 +63,15 @@ public class MainActivity extends AppCompatActivity {
         // VIEW.Y
         // ObjectAnimator anim = ObjectAnimator.ofFloat(mTextView, View.Y, 0f, 100f);
 
+        // Use Keyframe for sequential animation
+        Keyframe kf0 = Keyframe.ofFloat(0f, 0f);
+        Keyframe kf1 = Keyframe.ofFloat(.5f, 360f);
+        Keyframe kf2 = Keyframe.ofFloat(1f, 0f);
+        PropertyValuesHolder pvhRotation = PropertyValuesHolder.ofKeyframe(View.ROTATION, kf0, kf1, kf2);
+        ObjectAnimator rotationAnim = ObjectAnimator.ofPropertyValuesHolder(mTextView, pvhRotation);
+        rotationAnim.setDuration(5000);
+
+        // call playTogether to parallel animation
         // Combine two animation with AnimatorSet
         // ObjectAnimator animX = ObjectAnimator.ofFloat(mTextView, View.X, 50f);
         // ObjectAnimator animY = ObjectAnimator.ofFloat(mTextView, View.Y, 100f);
@@ -74,9 +86,10 @@ public class MainActivity extends AppCompatActivity {
         //anim.setDuration(1000);
         //anim.start();
 
-        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(this,
-                R.animator.example);
-        set.setTarget(mTextView);
-        set.start();
+        // Load From XML
+        // AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(this,
+        //         R.animator.example);
+        // set.setTarget(mTextView);
+        // set.start();
     }
 }
