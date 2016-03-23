@@ -79,12 +79,12 @@ public class MainActivity extends AppCompatActivity {
         // anim.playTogether(animX, animY);
 
         // Combine two animation with ObjectAnimator.ofPropertyValuesHolder
-        //PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat("x", 50f);
-        //PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat("y", 100f);
-        //ObjectAnimator anim = ObjectAnimator.ofPropertyValuesHolder(mTextView, pvhX, pvhY);
+        PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat("x", 50f);
+        PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat("y", 100f);
+        ObjectAnimator anim = ObjectAnimator.ofPropertyValuesHolder(mTextView, pvhX, pvhY);
 
-        //anim.setDuration(1000);
-        //anim.start();
+        anim.setDuration(1000);
+        anim.start();
 
         // Load From XML
         // AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(this,
